@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaman Anwar - CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 0.2em;
+        }
+        .contact-info, .section {
+            margin-bottom: 1.5em;
+        }
+        .section-title {
+            font-size: 1.5em;
+            color: #0056b3;
+            margin-bottom: 0.5em;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 0.5em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Zaman Anwar</h1>
+    <h2>Visitor Counter</h2>
+            <p id="visitorCount">Visitors: Loading...</p>
+    <div class="contact-info">
+        <p>Phone: +92 323 6164830</p>
+        <p>Email: <a href="mailto:zamananwar856@gmail.com">zamananwar856@gmail.com</a></p>
+        <p>LinkedIn: <a href="http://www.linkedin.com/in/zamananwar" target="_blank">http://www.linkedin.com/in/zamananwar</a></p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">OBJECTIVE</h2>
+        <p>To secure a position in a dynamic organization, where I can make the best use of my abilities, particularly as a team player, while continuously improving my technical skills in areas such as cloud computing, automation, and DevOps best practices. I aim to contribute to the organization's growth while enhancing my leadership, problem-solving, and collaboration skills in a professional environment.</p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+        <h3>Associate DevOps Engineer (DevSecOps)</h3>
+        <p>OpsOura, Islamabad, Pakistan</p>
+        <p>Jun 2024 – Present</p>
+        <ul>
+            <li>Managed Azure resources, including Resource Groups, Storage Accounts, Cosmos DB, Azure Functions, Networking, and CI/CD pipelines for automated deployments.</li>
+            <li>Worked on Kubernetes, including setting up and managing master and worker nodes, deploying services, and orchestrating containerized applications.</li>
+            <li>Containerized applications with Docker and efficiently managed multiple environments.</li>
+            <li>Implemented container scanning solutions to identify vulnerabilities and ensure compliance, automating security checks in the CI/CD pipeline.</li>
+            <li>Designed and managed CI/CD pipelines using GitHub Actions, Jenkins, and GitLab CI.</li>
+            <li>Set up monitoring and alerting systems with Prometheus, Grafana, and the ELK Stack for performance optimization.</li>
+            <li>Configured and optimized NGINX as a reverse proxy and web server for various applications, improving performance and security.</li>
+            <li>Implemented Infrastructure as Code (IaC) solutions using Ansible and ARM templates, ensuring scalable infrastructure management.</li>
+            <li>Collaborated with other teams to troubleshoot and resolve environment-related issues.</li>
+            <li>Utilized Git for efficient version control, overseeing repository management, and facilitating seamless collaboration on code development and changes.</li>
+        </ul>
+        
+        <h3>IT Assistant</h3>
+        <p>Confidential</p>
+        <p>September 2016 – May 2024</p>
+        <ul>
+            <li>Facilitated public interactions and addressed client queries, ensuring effective communication between the organization and stakeholders.</li>
+            <li>Managed official communications, including drafting and responding to emails, preparing reports, and maintaining records.</li>
+            <li>Coordinated and led IT-based initiatives, focusing on the implementation and management of technology solutions to enhance operational efficiency.</li>
+            <li>Provided technical support for hardware and software issues, troubleshooting problems to ensure minimal downtime.</li>
+            <li>Assisted in maintaining the organization's IT infrastructure, including network configurations and system updates.</li>
+            <li>Ensured data security and compliance with organizational policies by managing user access and monitoring IT systems.</li>
+            <li>Organized training sessions for staff to ensure the effective use of new software and IT tools.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">SKILLS And Tools</h2>
+        <ul>
+            <li>Configuration Management: Ansible.</li>
+            <li>Version Control Systems: Git, GitHub, GitLab.</li>
+            <li>Scripting & Automation: Bash, Crontab.</li>
+            <li>Containerization and Orchestration: Docker, Kubernetes(k8's, k3's).</li>
+            <li>CI/CD Pipelines: Jenkins, GitLab CI, GitHub Actions, CircleCI.</li>
+            <li>Cloud Platforms: Microsoft Azure.</li>
+            <li>Container Registries: Harbor registry, Docker Private registry.</li>
+            <li>Monitoring & Visualization: Prometheus, Grafana, Elasticsearch, Kibana, Metricbeat.</li>
+            <li>DevSecOps: Trivy, Aqua.</li>
+            <li>File System Management: File system structures and management.</li>
+            <li>System Administration: Linux (AlmaLinux, Ubuntu, CentOS, Debian), Windows.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">EDUCATION</h2>
+        <p>Bachelor of Science (Hons) in Computer Science</p>
+        <p>University of Gujrat, Gujrat, Pakistan</p>
+        <p>2012-2017</p>
+    </div>
+</div>
+<script>
+    async function updateVisitorCount() {
+        const apiUrl = "https://us-central1-zaman-project-441610.cloudfunctions.net/function-1"; // Cloud Function URL
+
+        try {
+            // Fetch the current count from the API (GET request)
+            const response = await fetch(apiUrl, { method: "GET" });
+            const data = await response.json();
+            document.getElementById("visitorCount").innerText = `Visitors: ${data.count}`;
+
+            // Increment the count (POST request)
+            await fetch(apiUrl, { method: "POST" });
+        } catch (error) {
+            console.error("Error updating visitor count:", error);
+        }
+    }
+
+    // Call the function to update the count on page load
+    updateVisitorCount();
+</script>
+</body>
+</html>
